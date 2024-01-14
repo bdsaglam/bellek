@@ -2,11 +2,11 @@
   "seed": 42,
   "dataset": {
     "train": {
-      "path": "bdsaglam/web_nlg-erx-sft-multi-turn-llama2",
+      "path": "bdsaglam/web_nlg-erx-sft-multi-turn-multi-sentence-llama2",
       "split": "train"
     },
     "validation": {
-      "path": "bdsaglam/web_nlg-erx-sft-multi-turn-llama2",
+      "path": "bdsaglam/web_nlg-erx-sft-multi-turn-multi-sentence-llama2",
       "split": "dev[:256]"
     }
   },
@@ -62,7 +62,7 @@
     "project": "thesis-kgcons"
   },
   "hfhub": {
-    "model_id": "bdsaglam/llama-2-7b-chat-jerx-mt-ss"
+    "model_id": "bdsaglam/llama-2-7b-chat-jerx-mt-ms"
   },
   "metaconfig": {
     "preprocessing": {
