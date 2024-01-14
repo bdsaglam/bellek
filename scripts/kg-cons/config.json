@@ -2,11 +2,11 @@
   "seed": 42,
   "dataset": {
     "train": {
-      "path": "bdsaglam/web_nlg-erx-sft-multi-turn-llama2",
+      "path": "bdsaglam/web_nlg-erx-sft-multi-turn-multi-sentence-llama2",
       "split": "train[:20%]"
     },
     "validation": {
-      "path": "bdsaglam/web_nlg-erx-sft-multi-turn-llama2",
+      "path": "bdsaglam/web_nlg-erx-sft-multi-turn-multi-sentence-llama2",
       "split": "dev[:256]"
     }
   },
@@ -33,8 +33,8 @@
       "bf16": true,
       "fp16": false,
       "group_by_length": true,
-      "per_device_train_batch_size": 2,
-      "gradient_accumulation_steps": 4,
+      "per_device_train_batch_size": 1,
+      "gradient_accumulation_steps": 8,
       "gradient_checkpointing": true,
       "max_grad_norm": 0.3,
       "weight_decay": 0.001,
@@ -50,8 +50,8 @@
     }
   },
   "evaluation": {
-    "max_new_tokens": 200,
-    "batch_size": 8
+    "max_new_tokens": 512,
+    "batch_size": 2
   },
   "wandb": {
     "mode": "online",
@@ -59,6 +59,6 @@
     "project": "thesis-kgcons"
   },
   "hfhub": {
-    "model_id": "bdsaglam/llama-2-7b-chat-jerx-mt-ss"
+    "model_id": "bdsaglam/llama-2-7b-chat-jerx-mt-ms"
   }
 }
