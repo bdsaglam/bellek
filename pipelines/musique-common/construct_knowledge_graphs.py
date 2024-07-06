@@ -73,9 +73,11 @@ def make_kg_triplet_extract_fn_from_config(llm_config: dict[str, Any]):
         return make_kg_triplet_extract_fn(llm_config["params"]["filepath"])
     elif llm_config["type"] == "online":
         from bellek.jerx.fewshot.llm import make_kg_triplet_extract_fn
+        from bellek.jerx.fewshot.llm import DEFAULT_JERX_SYSTEM_MESSAGE_FOR_GPT, DEFAULT_JERX_SYSTEM_MESSAGE_FOR_LLAMA
 
         return make_kg_triplet_extract_fn(
             model=llm_config["model"],
+            prefix_messages=[{'role': 'system', 'content': DEFAULT_JERX_SYSTEM_MESSAGE_FOR_LLAMA}],
             completion_params=llm_config.get("completion_params"),
         )
     else:
@@ -187,7 +189,7 @@ def main(
     with open(dataset_file) as f:
         examples = [json.loads(line) for line in f]
 
-    with ProcessPoolExecutor(max_workers=8) as executor:
+    with ProcessPoolExecutor(max_workers=4) as executor:
         futures = [
             executor.submit(
                 process_example,
